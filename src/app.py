@@ -61,8 +61,6 @@ def submit():
     if not (password := data.get("password")):
         return "400 Bad Request (A password is required.)", 400
 
-    password = generate_password_hash(password)
-
     author = data.get("author")
 
     if len(text) > 10000:
@@ -70,6 +68,8 @@ def submit():
 
     if len(password) < 8:
         return "400 Bad Request (Password must be > 8 characters.)", 400
+
+    password = generate_password_hash(password)
 
     id = uuid.uuid4()
 
