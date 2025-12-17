@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Welcome to my messenger!</h2>
+<div id="info">
+    <h3>FAQ</h3>
+    <strong>What is this?</strong>
+    <p>Here, you can send Christmas messages to me!</p>
+    <strong>Is this anonymous?</strong>
+    <p>
+        Yes, if you want it to be! You can send me anonymous messages, or
+        include your name if you want :3
+    </p>
+    <br />
+    <a href="{{ url_for('form') }}">Submit here :3</a>
+    <br /><br />
+
+    <a href="{{ url_for('edit') }}">Want to edit a message?</a>
+</div>
+{% endblock %}

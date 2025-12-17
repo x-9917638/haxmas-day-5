@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@1,100..900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: repeating-linear-gradient(90deg, lightpink, palevioletred);
+    font-family: "Sour Gummy", cursive;
+    font-size: 1.2em;
+    font-style: normal;
+    font-weight: 400;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #5a2d3e;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, #ff6b9d, #c44569);
+}
+
+h1 {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    color: #c44569;
+    margin-bottom: 30px;
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #9c4660;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+}
+
+textarea,
+input {
+    font-size: 1.1em;
+    font-family: monospace;
+    padding: 18px 20px;
+    border: 2px solid #f8c8d9;
+    border-radius: 12px;
+    background-color: #fff;
+    transition: all 0.01s ease;
+    color: #5a2d3e;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+    border-color: #ff6b9d;
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+    transform: translateY(-2px);
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.form-button {
+    background: linear-gradient(to right, #ff6b9d, #c44569);
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 12px;
+    font-family: "Sour Gummy", cursive;
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 6px 0 rgba(157, 68, 105, 0.3);
+}
+
+.form-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 0 rgba(157, 68, 105, 0.3);
+    background: linear-gradient(to right, #ff7bab, #d4567a);
+}
+
+.form-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 0 rgba(157, 68, 105, 0.3);
+}
+
+.form-button[hidden] {
+    visibility: hidden;
+}
+
+#version {
+    font-size: 24px;
+    font-family: monospace;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.password-requirements {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    color: #9c4660;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 25px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    body {
+        font-size: 1.1em;
+    }
+
+    textarea,
+    input {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    label {
+        font-size: 1.1rem;
+    }
+}

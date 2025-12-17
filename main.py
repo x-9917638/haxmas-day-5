@@ -4,8 +4,9 @@ from src.app import app
 
 if __name__ == "__main__":
     port: str | None = environ.get("PORT")
+    debug: bool = bool(environ.get("DEBUG", False))
     if port:
-        app.run(host="127.0.0.1", port=int(port))
+        app.run(host="127.0.0.1", port=int(port), debug=debug)
     else:
         print("\n[WARN]: PORT not defined, defaulting to 3000\n")
-        app.run(host="127.0.0.1", port=3000)
+        app.run(host="127.0.0.1", port=3000, debug=debug)

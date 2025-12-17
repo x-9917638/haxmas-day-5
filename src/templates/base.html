@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Christmas Messenger</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='styles/global.css') }}"
+        />
+        {% block css %}{% endblock %}
+    </head>
+    <body>
+        <div id="header">
+            <h1>Valerie's Christmas Messenger</h1>
+            <p id="version">Version 0.0.1</p>
+        </div>
+        <div class="container">
+            <div class="content">{% block content %}{% endblock %}</div>
+        </div>
+        {% block scripts %}{% endblock %}
+    </body>
+</html>
