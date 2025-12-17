@@ -77,8 +77,8 @@ def submit():
     db.session.add(message)  # pyright: ignore[reportAny]
     try:
         db.session.commit()
-    except Exception as e:
-        return f"500 Internal Server Error {e}", 500
+    except Exception:
+        return "500 Internal Server Error", 500
 
     return jsonify(id=message.id), 201  # pyright: ignore[reportAny]
 
@@ -120,7 +120,10 @@ def edit():
         return "200 OK", 200
     message.text = new_text
     db.session.add(message)  # pyright: ignore[reportAny]
-    db.session.commit()
+    try:
+        db.session.commit()
+    except Exception:
+        return "500 Internal Server Error", 500
     return "200 OK", 200
 
 
