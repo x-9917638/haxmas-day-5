@@ -138,7 +138,7 @@ def all():
         if not (password := request.json.get("password")):
             return redirect(url_for("all"))
 
-        if password.strip() != ADMIN_PASSWORD:
+        if password != ADMIN_PASSWORD:
             return redirect(url_for("all"))
 
         session["auth"] = True
