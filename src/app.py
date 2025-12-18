@@ -85,7 +85,7 @@ def submit():
     return jsonify(id=message.id), 201  # pyright: ignore[reportAny]
 
 
-@app.route("/edit/", methods=["PATCH", "GET"])
+@app.route("/edit/", methods=["POST", "GET"])
 def edit():
     if request.method == "GET":
         return render_template("edit.html")

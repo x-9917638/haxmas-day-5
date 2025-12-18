@@ -10,7 +10,7 @@ form.addEventListener("submit", async (event) => {
     return;
   }
   const res = await fetch(`/edit`, {
-    method: "patch",
+    method: "post",
     headers: {
       "Content-Type": "application/json",
     },
