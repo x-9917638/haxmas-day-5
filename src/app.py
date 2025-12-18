@@ -1,8 +1,9 @@
 import uuid
-from os import environ
+from base64 import b64encode
+from os import environ, environb
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request, session, url_for
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_uuid import FlaskUUID  # pyright: ignore[reportMissingTypeStubs]
@@ -20,6 +21,7 @@ if not (ADMIN_PASSWORD := environ.get("ADMIN_PASSWORD")):
 
 def create_app():
     app = Flask(__name__)
+    app.config["SECRET_KEY"] = environ.get("SECRET_KEY")
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///default.db"
 
     return app
@@ -132,10 +134,18 @@ def all():
     if not ADMIN_PASSWORD:
         return "403 Forbidden", 403
 
-    if not (password := request.args.get("password")):
-        return render_template("all.html", auth=False)
+    if request.method == "POST":
+        if not (password := request.json.get("password")):
+            return redirect(url_for("all"))
 
-    if password.strip() != ADMIN_PASSWORD:
+        if password.strip() != ADMIN_PASSWORD:
+            return redirect(url_for("all"))
+
+        session["auth"] = True
+
+        return redirect(url_for("all"))
+
+    if not session.get("auth"):
         return render_template("all.html", auth=False)
 
     query = select(db.Message)

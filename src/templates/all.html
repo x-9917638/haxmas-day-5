@@ -16,7 +16,7 @@
             </div>
         {% endfor %}
     {% else %}
-        <form id="login" method="GET" action="{{ url_for('all') }}">
+        <form id="login">
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" />
@@ -25,4 +25,7 @@
             <button class="form-button" id="login" type="submit">Bleh :3</button>
         </form>
     {% endif %}
+    {% block scripts %}
+        <script src="{{ url_for('static', filename='scripts/all.js') }}"></script>
+    {% endblock %}
 {% endblock %}
